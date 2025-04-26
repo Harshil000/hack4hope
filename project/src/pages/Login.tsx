@@ -9,7 +9,7 @@ const Login = () => {
 
     const submit = async () => {
         // console.log(username.current.value)
-        if (username.current.value == "" || usermail.current.value == "" || userpassword.current.value == "") {
+        if (usermail.current.value == "" || userpassword.current.value == "") {
             alert("Please fill all the fields")
         } else {
             if (LoginType == 'login') {
@@ -18,18 +18,22 @@ const Login = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({mail : usermail , password : userpassword}),
+                    body: JSON.stringify({ mail: usermail, password: userpassword }),
                 });
                 const res = await response.json()
                 console.log(res)
             } else {
-                const response = await fetch('http://localhost:3000/signup', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({name : username , mail : usermail , password : userpassword}),
-                });
+                if (username.current.value == "") {
+                    alert("Please fill all the fields")
+                } else {
+                    const response = await fetch('http://localhost:3000/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ name: username, mail: usermail, password: userpassword , usertype : adminLogin}),
+                    });
+                }
                 const res = await response.json()
                 console.log(res)
             }
