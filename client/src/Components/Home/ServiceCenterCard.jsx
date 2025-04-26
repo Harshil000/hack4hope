@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Users, Clock, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ServiceCenter } from '../../types';
+// import { ServiceCenter } from '../../types';
 
 const ServiceCenterCard = ({ serviceCenter }) => {
   const { id, name, type, location, currentWaitTime, peopleInQueue, isOpen } = serviceCenter;

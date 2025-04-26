@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Calendar, CheckCircle, BarChart3, ChevronRight, BellRing } from 'lucide-react';
 import UpcomingAppointment from '../components/Dashboard/UpcomingAppointment';
-import { Appointment } from '../types';
+// import { Appointment } from '../types';
 
 const UserDashboard = () => {
   // Mock data for upcoming appointments
