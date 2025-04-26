@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Clock, Calendar, User, BarChart3, Bell } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  if (!isAuthenticated) {
+    navigate('/login');
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,22 +40,22 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
+          {isAuthenticated && <div className="hidden md:flex md:items-center md:space-x-4">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.path)
+                className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(item.path)
                     ? 'bg-primary-dark text-white'
                     : 'text-neutral-600 hover:bg-primary/10 hover:text-primary-dark'
-                }`}
+                  }`}
               >
                 <span className="mr-2">{item.icon}</span>
                 {item.name}
               </Link>
             ))}
           </div>
+          }
 
           <div className="hidden md:flex md:items-center md:space-x-4">
             <button
@@ -85,11 +93,10 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center px-3 py-2 rounded-md text-sm font-medium ${
-                  isActive(item.path)
+                className={`flex items-center px-3 py-2 rounded-md text-sm font-medium ${isActive(item.path)
                     ? 'bg-primary-dark text-white'
                     : 'text-neutral-600 hover:bg-neutral-100'
-                }`}
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="mr-2">{item.icon}</span>
