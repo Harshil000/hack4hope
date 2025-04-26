@@ -1,14 +1,16 @@
 // import React, { useId } from 'react'
 import { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const [adminLogin, setAdminLogin] = useState('user-type');
     const [LoginType, setLoginType] = useState('login')
     const username = useRef<HTMLInputElement>(null)
     const usermail = useRef<HTMLInputElement>(null)
     const userpassword = useRef<HTMLInputElement>(null)
+    const navigate = useNavigate()
 
     const submit = async () => {
-        // console.log(username.current?.value)
+        
         if (usermail.current?.value == "" || userpassword.current?.value == "") {
             alert("Please fill all the fields")
         } else {
@@ -21,6 +23,10 @@ const Login = () => {
                     body: JSON.stringify({ "mail": usermail.current?.value, "password": userpassword.current?.value }),
                 });
                 const res = await response.json()
+                if(res.status == 'accepted'){
+                    localStorage.setItem("mail", usermail.current?.value)
+                    navigate('/')
+                }
                 console.log(res)
             } else {
                 if (username.current?.value == "") {
@@ -35,6 +41,10 @@ const Login = () => {
                     });
                     const res = await response.json()
                     console.log(res)
+                    if(res.status == "success"){
+                        localStorage.setItem("mail" , usermail.current?.value)
+                        navigate('/')
+                    }
                 }
             }
         }

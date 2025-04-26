@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Clock, Calendar, User, BarChart3, Bell } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -6,10 +6,23 @@ import { useNavigate } from 'react-router-dom';
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate()
+  const [checkMail, setcheckMail] = useState(localStorage.getItem('mail'))
+  const [Validate, setValidate] = useState(false)
+  
 
-  // if (!isAuthenticated) {
-  //   navigate('/login');
-  // }
+  useEffect(() => {
+    console.log(checkMail)
+    setTimeout(() => {
+      if (checkMail == null) {
+        navigate('/login');
+      }else{
+        setValidate(true)
+      }
+    }, 1000);
+  }, [Validate])
+
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,21 +50,23 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(item.path)
-                  ? 'bg-primary-dark text-white'
-                  : 'text-neutral-600 hover:bg-primary/10 hover:text-primary-dark'
-                  }`}
-              >
-                <span className="mr-2">{item.icon}</span>
-                {item.name}
-              </Link>
-            ))}
-          </div>
+          {checkMail != null &&
+            <div className="hidden md:flex md:items-center md:space-x-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(item.path)
+                    ? 'bg-primary-dark text-white'
+                    : 'text-neutral-600 hover:bg-primary/10 hover:text-primary-dark'
+                    }`}
+                >
+                  <span className="mr-2">{item.icon}</span>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          }
 
 
           <div className="hidden md:flex md:items-center md:space-x-4">
