@@ -8,21 +8,21 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate()
   const [checkMail, setcheckMail] = useState(localStorage.getItem('mail'))
-  const [Validate, setValidate] = useState(false)
-  
+
 
   useEffect(() => {
-    console.log(checkMail)
-    setTimeout(() => {
-      if (checkMail == null) {
-        navigate('/login');
-      }else{
-        setValidate(true)
-      }
-    }, 1000);
-  }, [Validate])
+    if (checkMail == null) {
+      navigate('/login');
+    }
+    if (checkMail == "admin") {
+      navigate('/admin');
+    }
+  }, [])
 
-
+  const logout = () => {
+    localStorage.removeItem('mail');
+    navigate('/login');
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -53,32 +53,24 @@ const Navbar: React.FC = () => {
           {checkMail != null &&
             <div className="hidden md:flex md:items-center md:space-x-4">
               {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(item.path)
-                    ? 'bg-primary-dark text-white'
-                    : 'text-neutral-600 hover:bg-primary/10 hover:text-primary-dark'
-                    }`}
-                >
-                  <span className="mr-2">{item.icon}</span>
-                  {item.name}
-                </Link>
+                <div key={item.path} className={checkMail == "user" && item.name != "Admin" ? "block" : "hidden"}>
+                  <Link
+                    to={item.path}
+                    className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(item.path)
+                      ? 'bg-primary-dark text-white'
+                      : 'text-neutral-600 hover:bg-primary/10 hover:text-primary-dark'
+                      }`}
+                  >
+                    <span className="mr-2">{item.icon}</span>
+                    {item.name}
+                  </Link>
+                </div>
               ))}
-              
+
             </div>
           }
 
-
-          <div className="hidden md:flex md:items-center md:space-x-4">
-            <button
-              className="p-2 rounded-full text-neutral-600 hover:bg-neutral-100 relative"
-              aria-label="Notifications"
-            >
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
-            </button>
-          </div>
+          <div className='btn-primary h-fit w-fit px-4 py-2 cursor-pointer mt-3' onClick={logout}>Logout</div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden">

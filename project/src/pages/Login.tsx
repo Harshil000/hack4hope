@@ -10,7 +10,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const submit = async () => {
-        
+
         if (usermail.current?.value == "" || userpassword.current?.value == "") {
             alert("Please fill all the fields")
         } else {
@@ -20,12 +20,16 @@ const Login = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ "mail": usermail.current?.value, "password": userpassword.current?.value , "usertype": adminLogin }),
+                    body: JSON.stringify({ "mail": usermail.current?.value, "password": userpassword.current?.value, "usertype": adminLogin }),
                 });
                 const res = await response.json()
-                if(res.status == 'accepted'){
+                if (res.status == 'accepted') {
                     localStorage.setItem("mail", res.user.userType)
-                    navigate('/')
+                    if (res.user.userType == "admin") {
+                        navigate('/admin')
+                    } else {
+                        navigate('/')
+                    }
                 }
                 console.log(res)
             } else {
@@ -41,8 +45,8 @@ const Login = () => {
                     });
                     const res = await response.json()
                     console.log(res)
-                    if(res.status == "success"){
-                        localStorage.setItem("mail" , res.user.userType)
+                    if (res.status == "success") {
+                        localStorage.setItem("mail", res.user.userType)
                         navigate('/')
                     }
                 }
