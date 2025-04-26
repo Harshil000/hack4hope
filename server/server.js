@@ -1,8 +1,11 @@
 const express = require("express")
 const cors = require("cors")
+const bodyParser = require('body-parser')
 const app = express()
 require("dotenv").config()
-const PORT = process.env.PORT || 4000
+const db = require('./db')
+const PORT = process.env.PORT || 3000
+
 app.use(cors({
     origin: "*",
     credentials: true
