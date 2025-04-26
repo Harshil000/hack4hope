@@ -24,7 +24,8 @@ const Login = () => {
                 });
                 const res = await response.json()
                 if (res.status == 'accepted') {
-                    localStorage.setItem("mail", res.user.userType)
+                    localStorage.setItem("mail", res.user.mail)
+                    localStorage.setItem("usertype", res.user.userType)
                     if (res.user.userType == "admin") {
                         navigate('/admin')
                     } else {
@@ -46,8 +47,14 @@ const Login = () => {
                     const res = await response.json()
                     console.log(res)
                     if (res.status == "success") {
-                        localStorage.setItem("mail", res.user.userType)
-                        navigate('/')
+                        localStorage.setItem("mail", res.user.mail)
+                        localStorage.setItem("usertype", res.user.userType)
+                        if (res.user.userType == "user") {
+                            navigate('/')
+                        } else {
+                            navigate('/admin')
+
+                        }
                     }
                 }
             }

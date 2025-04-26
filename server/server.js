@@ -5,7 +5,8 @@ const app = express()
 app.use(express.json())
 require("dotenv").config()
 const db = require('./db')
-const userModel = require('./models/user')
+const accountModel = require('./models/user')
+const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3000
 
 app.use(cors({
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
 
 app.post('/login', async (req, res) => {
     const {mail, password, usertype} = req.body
-    const validUser = await userModel.findOne({mail})
+    const validUser = await accountModel.findOne({mail})
     if(!validUser){
         res.json({ status: 'reject', message: 'user not found' });
     } else {
@@ -39,14 +40,20 @@ app.post('/login', async (req, res) => {
 
 app.post('/signup', async(req, res)=>{
     const {name, mail, password, usertype} = req.body
-    if(!await userModel.findOne({mail})){
-        const newUser = await userModel.create({
+    if(!await accountModel.findOne({mail})){
+        const newUser = await accountModel.create({
             name,
             mail,
             password,
             userType: usertype
         })
         res.json({ status: "success", message: "User added successfully", user: newUser });
+        const AdminSchema = new mongoose.Schema({
+            name: String,
+            mail: String,
+            time: String,
+        })
+        const adminModel= mongoose.model(newUser.mail, AdminSchema)
     } else {
         res.json({ status: "reject", message: "User already exists" });
     }
