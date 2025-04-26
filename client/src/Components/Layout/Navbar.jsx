@@ -57,7 +57,8 @@ const Navbar = () => {
               <Bell className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
             </button>
-            <button className="btn-primary">Log In</button>
+            {/* <button className="btn-primary">Log In</button> */}
+            <Link to={'/login'}>Log In</Link>
           </div>
 
           {/* Mobile menu button */}
@@ -104,7 +105,8 @@ const Navbar = () => {
                 <Bell className="w-5 h-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
               </button>
-              <button className="btn-primary">Log In</button>
+              {/* <button className="btn-primary">Log In</button> */}
+              <Link to={'/login'}>Log In</Link>
             </div>
           </div>
         </div>
