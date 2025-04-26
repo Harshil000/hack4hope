@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const bodyParser = require('body-parser')
 const app = express()
+app.use(express.json())
 require("dotenv").config()
 const db = require('./db')
 const userModel = require('./models/user')
@@ -20,12 +21,12 @@ app.post('/login', async (req, res) => {
     const {mail, password} = req.body
     const validUser = await userModel.findOne({mail})
     if(!validUser){
-        res.send(JSON.stringfy({status: 'reject', message: 'user not found'}))
+        res.json({ status: 'reject', message: 'user not found' });
     } else {
         if (validUser.password==password){
-            res.send(JSON.stringify({status: 'accepted', message: 'succesfully logged in'}))
+        res.json({ status: 'accepted', message: 'successfully logged in' });
         } else {
-            res.send(JSON.stringify({status: "reject" , message: 'incorrect password'}))
+            res.json({ status: 'reject', message: 'incorrect password' });
         }
     }
 
@@ -38,7 +39,7 @@ app.post('/signup', async(req, res)=>{
         mail,
         password
     })
-    res.send("User added succesfully")
+    res.json({ status: "success", message: "User added successfully" });
 })
 
 app.listen(PORT, () => {
