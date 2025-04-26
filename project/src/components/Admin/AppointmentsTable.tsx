@@ -19,6 +19,24 @@ const AppointmentsTable: React.FC = () => {
     { id: '5', name: 'Michael Brown', service: 'Credit Card', time: '11:30 AM', status: 'waiting' },
   ];
 
+  const giveAppointment = async() => {
+    const response = await fetch('http://localhost:3000/appointment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        
+      }),
+    });
+
+    if (response.ok) {
+      console.log('Appointment added successfully!');
+    } else {
+      console.error('Failed to add appointment.');
+    }
+  }
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden">
       <div className="p-5 border-b border-neutral-200">
@@ -71,7 +89,7 @@ const AppointmentsTable: React.FC = () => {
               </tr>
             ))}
             <tr className=''>
-              <td className='m-3 btn-primary'>Add User</td>
+              <td onClick={giveAppointment} className='m-3 btn-primary'>Add User</td>
             </tr>
           </tbody>
         </table>
