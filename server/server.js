@@ -60,6 +60,25 @@ app.post('/signup', async(req, res)=>{
     }
 })
 
+app.post('/appointment', async(req, res)=>{
+    const {name, mail, time, date} = req.body
+    const findUser = await accountModel.findOne({mail})
+    if(!findUser){
+        res.json({ status: 'reject', message: 'user not found' });
+    } else {
+        if (findUser.userType == "admin"){
+            res.json({ status: 'reject', message: 'invalid user'});
+        }
+    }
+    const newAppointment = await adminModel.create({
+        name,
+        mail,
+        time,
+        date
+    })
+    res.json({ status: "success", message: "Appointment added successfully", appointment: newAppointment });
+})
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`)
 })
