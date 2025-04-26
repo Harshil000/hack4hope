@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
             Skip the wait, save your time
           </h1>
           <p className="text-primary/80 mb-6">
-            QueueWise Pro uses real-time data and AI to help you find the shortest queues and book appointments at service centers near you.
+            Waitless uses real-time data and AI to help you find the shortest queues and book appointments at service centers near you.
           </p>
           
           <div className="relative">

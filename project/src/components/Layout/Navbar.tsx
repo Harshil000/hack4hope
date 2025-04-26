@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-primary-dark font-bold text-xl">QueueWise Pro</span>
+              <span className="text-primary-dark font-bold text-xl">WaitLess</span>
             </Link>
           </div>
 
@@ -65,7 +65,6 @@ const Navbar: React.FC = () => {
               <Bell className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
             </button>
-            <Link to="/login" className="btn-primary">Log In</Link>
           </div>
 
           {/* Mobile menu button */}
