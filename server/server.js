@@ -33,13 +33,18 @@ app.post('/login', async (req, res) => {
 })
 
 app.post('/signup', async(req, res)=>{
-    const {name, mail, password} = req.body
-    const newUser = await userModel.create({
-        name,
-        mail,
-        password
-    })
-    res.json({ status: "success", message: "User added successfully" });
+    const {name, mail, password, usertype} = req.body
+    if(!await userModel.findOne({mail})){
+        const newUser = await userModel.create({
+            name,
+            mail,
+            password,
+            userType: usertype
+        })
+        res.json({ status: "success", message: "User added successfully" });
+    } else {
+        res.json({ status: "reject", message: "User already exists" });
+    }
 })
 
 app.listen(PORT, () => {
