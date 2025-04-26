@@ -52,6 +52,7 @@ app.post('/signup', async(req, res)=>{
             name: String,
             mail: String,
             time: String,
+            date: String
         })
         const adminModel= mongoose.model(newUser.mail, AdminSchema)
     } else {
