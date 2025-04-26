@@ -20,7 +20,7 @@ const Login = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ "mail": usermail.current?.value, "password": userpassword.current?.value }),
+                    body: JSON.stringify({ "mail": usermail.current?.value, "password": userpassword.current?.value , "usertype": adminLogin }),
                 });
                 const res = await response.json()
                 if(res.status == 'accepted'){

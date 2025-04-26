@@ -65,6 +65,7 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
+              
             </div>
           }
 
