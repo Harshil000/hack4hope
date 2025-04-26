@@ -98,10 +98,6 @@ const UserDashboard: React.FC = () => {
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-medium text-neutral-800">Upcoming Appointments</h2>
-              <Link to="/booking" className="text-sm text-primary-dark hover:text-accent flex items-center">
-                Book New
-                <ChevronRight className="w-4 h-4" />
-              </Link>
             </div>
             
             {upcomingAppointments.length > 0 ? (
