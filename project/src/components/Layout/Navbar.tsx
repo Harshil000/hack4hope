@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+<<<<<<< HEAD
 import { Menu, X, Clock, Calendar, User, BarChart3, Bell, MailCheck } from 'lucide-react';
+=======
+import { Menu, X } from 'lucide-react';
+>>>>>>> fdb76f967fd6e5bacdd6c84026597b8942bb9e4a
 import { useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  // const location = useLocation();
   const navigate = useNavigate()
   const [checkMail, setcheckMail] = useState(localStorage.getItem('mail'))
 
@@ -29,16 +33,9 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
-
-  const navItems = [
-    { name: 'Queue Status', path: '/', icon: <Clock className="w-5 h-5" /> },
-    { name: 'Book Slot', path: '/booking', icon: <Calendar className="w-5 h-5" /> },
-    { name: 'My Dashboard', path: '/dashboard', icon: <User className="w-5 h-5" /> },
-    { name: 'Admin', path: '/admin', icon: <BarChart3 className="w-5 h-5" /> },
-  ];
+  // const isActive = (path: string) => {
+  //   return location.pathname === path;
+  // };
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
@@ -50,6 +47,7 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
+<<<<<<< HEAD
           {/* Desktop navigation */}
           {checkMail != null &&
             <div className="hidden md:flex md:items-center md:space-x-4">
@@ -73,6 +71,9 @@ const Navbar: React.FC = () => {
 
           {checkMail != null && <div className='btn-primary h-fit w-fit px-4 py-2 cursor-pointer mt-3' onClick={logout}>Logout</div>
           }
+=======
+          <div className='btn-primary h-fit w-fit px-4 py-2 cursor-pointer mt-3' onClick={logout}>Logout</div>
+>>>>>>> fdb76f967fd6e5bacdd6c84026597b8942bb9e4a
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
@@ -92,7 +93,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile menu */}
-      {isMenuOpen && (
+      {/* {isMenuOpen && (
         <div className="md:hidden">
           <div className="pt-2 pb-3 space-y-1 px-2">
             {navItems.map((item) => (
@@ -121,7 +122,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };

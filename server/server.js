@@ -46,7 +46,7 @@ app.post('/signup', async(req, res)=>{
             password,
             userType: usertype
         })
-        res.json({ status: "success", message: "User added successfully" });
+        res.json({ status: "success", message: "User added successfully", user: newUser });
     } else {
         res.json({ status: "reject", message: "User already exists" });
     }
