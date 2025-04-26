@@ -24,7 +24,7 @@ const Login = () => {
                 });
                 const res = await response.json()
                 if(res.status == 'accepted'){
-                    localStorage.setItem("mail", usermail.current?.value)
+                    localStorage.setItem("mail", res.user.userType)
                     navigate('/')
                 }
                 console.log(res)
@@ -42,7 +42,7 @@ const Login = () => {
                     const res = await response.json()
                     console.log(res)
                     if(res.status == "success"){
-                        localStorage.setItem("mail" , usermail.current?.value)
+                        localStorage.setItem("mail" , res.user.userType)
                         navigate('/')
                     }
                 }
