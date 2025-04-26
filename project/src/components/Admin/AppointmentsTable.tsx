@@ -18,22 +18,7 @@ const AppointmentsTable: React.FC = () => {
     { id: '4', name: 'Emily Wilson', service: 'Account Inquiry', time: '11:00 AM', status: 'no-show' },
     { id: '5', name: 'Michael Brown', service: 'Credit Card', time: '11:30 AM', status: 'waiting' },
   ];
-  
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'checked-in':
-        return <span className="badge bg-primary/10 text-primary-dark">Checked In</span>;
-      case 'waiting':
-        return <span className="badge bg-warning/10 text-warning">Waiting</span>;
-      case 'completed':
-        return <span className="badge bg-success/10 text-success">Completed</span>;
-      case 'no-show':
-        return <span className="badge bg-error/10 text-error">No Show</span>;
-      default:
-        return null;
-    }
-  };
-  
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden">
       <div className="p-5 border-b border-neutral-200">
@@ -48,13 +33,7 @@ const AppointmentsTable: React.FC = () => {
                 Name
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                Service
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                 Time
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                Status
               </th>
               <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-neutral-500 uppercase tracking-wider">
                 Actions
@@ -68,16 +47,10 @@ const AppointmentsTable: React.FC = () => {
                   <div className="text-sm font-medium text-neutral-800">{appointment.name}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-neutral-600">{appointment.service}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center text-sm text-neutral-600">
                     <Clock className="w-4 h-4 mr-1 text-neutral-400" />
                     {appointment.time}
                   </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {getStatusBadge(appointment.status)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex justify-end space-x-2">
@@ -97,22 +70,11 @@ const AppointmentsTable: React.FC = () => {
                 </td>
               </tr>
             ))}
+            <tr className=''>
+              <td className='m-3 btn-primary'>Add User</td>
+            </tr>
           </tbody>
         </table>
-      </div>
-      
-      <div className="p-4 border-t border-neutral-200 flex justify-between items-center">
-        <div className="text-sm text-neutral-600">
-          Showing <span className="font-medium">5</span> of <span className="font-medium">24</span> appointments
-        </div>
-        <div className="flex space-x-2">
-          <button className="px-3 py-1 border border-neutral-300 rounded text-sm text-neutral-700 hover:bg-neutral-50">
-            Previous
-          </button>
-          <button className="px-3 py-1 bg-primary-dark text-white rounded text-sm hover:bg-primary-dark/90">
-            Next
-          </button>
-        </div>
       </div>
     </div>
   );

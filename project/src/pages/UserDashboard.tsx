@@ -133,13 +133,10 @@ const UserDashboard: React.FC = () => {
                       Service
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                      Purpose
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                       Date
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                      Wait Time
+                      Time
                     </th>
                   </tr>
                 </thead>
@@ -148,9 +145,6 @@ const UserDashboard: React.FC = () => {
                     <tr key={visit.id} className="hover:bg-neutral-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-neutral-800">{visit.serviceName}</div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-neutral-600">{visit.purpose}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-neutral-600">{formatDate(visit.date)}</div>
@@ -166,74 +160,6 @@ const UserDashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="lg:col-span-1">
-          <div className="sticky top-24 space-y-8">
-            <div>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-medium text-neutral-800">Insights & Suggestions</h2>
-                <BarChart3 className="w-5 h-5 text-neutral-600" />
-              </div>
-              
-              <div className="bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden">
-                {suggestions.map((suggestion, index) => (
-                  <div 
-                    key={suggestion.id} 
-                    className={`p-4 ${index !== suggestions.length - 1 ? 'border-b border-neutral-200' : ''}`}
-                  >
-                    <div className="flex">
-                      <div className="flex-shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                          {suggestion.icon}
-                        </div>
-                      </div>
-                      <div className="ml-4">
-                        <h3 className="text-sm font-medium text-neutral-800">{suggestion.title}</h3>
-                        <p className="text-sm text-neutral-600 mt-1">{suggestion.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-medium text-neutral-800">Notifications</h2>
-                <BellRing className="w-5 h-5 text-neutral-600" />
-              </div>
-              
-              <div className="bg-white rounded-xl shadow-sm border border-neutral-200 p-5">
-                <div className="space-y-4">
-                  <div className="p-3 bg-primary/5 border border-primary/20 rounded-lg">
-                    <p className="text-sm font-medium text-neutral-800">
-                      Upcoming appointment reminder
-                    </p>
-                    <p className="text-sm text-neutral-600 mt-1">
-                      Your appointment at City General Hospital is tomorrow at 10:30 AM.
-                    </p>
-                    <div className="mt-2 text-xs text-neutral-500">2 hours ago</div>
-                  </div>
-                  
-                  <div className="p-3 bg-neutral-50 border border-neutral-200 rounded-lg">
-                    <p className="text-sm font-medium text-neutral-800">
-                      Wait time alert
-                    </p>
-                    <p className="text-sm text-neutral-600 mt-1">
-                      First National Bank currently has shorter than usual wait times.
-                    </p>
-                    <div className="mt-2 text-xs text-neutral-500">Yesterday</div>
-                  </div>
-                  
-                  <div className="text-center mt-4">
-                    <button className="text-sm text-primary-dark hover:text-accent">
-                      View All Notifications
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

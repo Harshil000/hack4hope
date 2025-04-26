@@ -65,42 +65,6 @@ const QueueStats: React.FC<QueueStatsProps> = ({ stats }) => {
           </div>
         </div>
       </div>
-      
-      <div className="card p-5">
-        <div className="flex items-start justify-between">
-          <div>
-            <p className="text-sm text-neutral-600">Serving Rate</p>
-            <p className="text-2xl font-medium mt-1">{servingRate}/hr</p>
-            
-            <div className="mt-2 flex items-center">
-              <span className="text-xs text-neutral-500">
-                Efficiency score: 87%
-              </span>
-            </div>
-          </div>
-          <div className="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center">
-            <TrendingUp className="w-5 h-5 text-success" />
-          </div>
-        </div>
-      </div>
-      
-      <div className="card p-5">
-        <div className="flex items-start justify-between">
-          <div>
-            <p className="text-sm text-neutral-600">Anomalies</p>
-            <p className="text-2xl font-medium mt-1">{anomalies}</p>
-            
-            <div className="mt-2 flex items-center">
-              <span className="text-xs text-neutral-500">
-                {anomalies > 0 ? 'Requires attention' : 'All systems normal'}
-              </span>
-            </div>
-          </div>
-          <div className="w-10 h-10 rounded-full bg-error/10 flex items-center justify-center">
-            <AlertTriangle className="w-5 h-5 text-error" />
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
