@@ -1,0 +1,71 @@
+import React from 'react';
+import { Calendar, Clock, MapPin, X, Edit2 } from 'lucide-react';
+
+const UpcomingAppointment = ({ appointment }) => {
+  const { serviceName, location, date, time, qrCode } = appointment;
+  
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  };
+  
+  return (
+    <div className="card">
+      <div className="p-5">
+        <div className="flex justify-between items-start">
+          <h3 className="font-medium text-lg text-neutral-800">{serviceName}</h3>
+          <div className="flex space-x-2">
+            <button className="p-1 rounded-full hover:bg-neutral-100">
+              <Edit2 className="w-4 h-4 text-neutral-600" />
+            </button>
+            <button className="p-1 rounded-full hover:bg-error/10 hover:text-error">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+        
+        <div className="flex items-center text-sm text-neutral-600 mt-1">
+          <MapPin className="w-4 h-4 mr-1" />
+          <span>{location}</span>
+        </div>
+        
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <div className="flex items-center">
+            <Calendar className="w-5 h-5 mr-2 text-primary-dark" />
+            <div>
+              <div className="text-xs text-neutral-500">Date</div>
+              <div className="font-medium">{formatDate(date)}</div>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <Clock className="w-5 h-5 mr-2 text-primary-dark" />
+            <div>
+              <div className="text-xs text-neutral-500">Time</div>
+              <div className="font-medium">{time}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-4 p-3 bg-neutral-50 rounded-lg flex items-center justify-between">
+          <div>
+            <p className="text-sm font-medium">Virtual Check-in</p>
+            <p className="text-xs text-neutral-600">Show this QR code upon arrival</p>
+          </div>
+          <div className="w-16 h-16 bg-white p-2 rounded-lg shadow-sm">
+            {/* This would be a real QR code */}
+            <div className="w-full h-full bg-neutral-200 rounded flex items-center justify-center">
+              <span className="text-xs text-neutral-600">QR Code</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          <button className="btn-outline w-full py-1.5">Get Directions</button>
+          <button className="btn-primary w-full py-1.5">Check Status</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default UpcomingAppointment;
