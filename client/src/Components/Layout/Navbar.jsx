@@ -58,7 +58,7 @@ const Navbar = () => {
               <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
             </button>
             {/* <button className="btn-primary">Log In</button> */}
-            <Link to={'/login'}>Log In</Link>
+            <Link className='btn-primary' to={'/login'}>Log In</Link>
           </div>
 
           {/* Mobile menu button */}
@@ -106,7 +106,7 @@ const Navbar = () => {
                 <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
               </button>
               {/* <button className="btn-primary">Log In</button> */}
-              <Link to={'/login'}>Log In</Link>
+              <Link className='btn-primary' to={'/login'}>Log In</Link>
             </div>
           </div>
         </div>
