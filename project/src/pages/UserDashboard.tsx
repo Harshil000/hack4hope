@@ -4,9 +4,9 @@ import { Clock, Calendar, CheckCircle, BarChart3, ChevronRight, BellRing } from 
 import UpcomingAppointment from '../components/Dashboard/UpcomingAppointment';
 import { Appointment } from '../types';
 
-const UserDashboard = () => {
+const UserDashboard: React.FC = () => {
   // Mock data for upcoming appointments
-  const upcomingAppointments = [
+  const upcomingAppointments: Appointment[] = [
     {
       id: '1',
       serviceName: 'City General Hospital',
@@ -65,7 +65,7 @@ const UserDashboard = () => {
     {
       id: '2',
       title: 'Time for a check-up?',
-      description: "It's been 6 months since your last medical check-up.",
+      description: 'It\'s been 6 months since your last medical check-up.',
       icon: <Calendar className="w-5 h-5" />,
     },
     {
@@ -76,7 +76,7 @@ const UserDashboard = () => {
     },
   ];
   
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   };

@@ -3,7 +3,7 @@ import { ArrowLeft, Building2, Clock, Calendar, Users, MapPin } from 'lucide-rea
 import { Link, useLocation } from 'react-router-dom';
 import TimeSlotPicker from '../components/Booking/TimeSlotPicker';
 
-const BookingPage = () => {
+const BookingPage: React.FC = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const centerId = queryParams.get('center');

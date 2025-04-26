@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Search, Filter, MapPin } from 'lucide-react';
 import ServiceCenterCard from '../components/Home/ServiceCenterCard';
 import QueueMap from '../components/Home/QueueMap';
+import { ServiceCenter } from '../types';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedType, setSelectedType] = useState(null);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
   
   // Mock data for service centers
-  const serviceCenters = [
+  const serviceCenters: ServiceCenter[] = [
     {
       id: '1',
       name: 'City General Hospital',
