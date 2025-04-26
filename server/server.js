@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const app = express()
 require("dotenv").config()
 const db = require('./db')
+const userModel = require('./models/user')
 const PORT = process.env.PORT || 3000
 
 app.use(cors({
@@ -13,6 +14,31 @@ app.use(cors({
 
 app.get("/", (req, res) => {
     res.send("src")
+})
+
+app.post('/login', async (req, res) => {
+    const {email, password} = req.body
+    const validUser = await userModel.findOne({email})
+    if(!validUser){
+        res.send(JSON.stringfy({status: 'reject', message: 'user not found'}))
+    } else {
+        if (validUser.password==password){
+            res.send(JSON.stringify({status: 'accepted', message: 'succesfully logged in'}))
+        } else {
+            res.send(JSON.stringify({status: "reject" , message: 'incorrect password'}))
+        }
+    }
+
+})
+
+app.post('/signup', async(req, res)=>{
+    const {name, email, password} = req.body
+    const newUser = await userModel.create({
+        name,
+        email,
+        password
+    })
+    res.send("User added succesfully")
 })
 
 app.listen(PORT, () => {
