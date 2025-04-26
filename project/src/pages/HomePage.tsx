@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import ServiceCenterCard from '../components/Home/ServiceCenterCard';
 import QueueMap from '../components/Home/QueueMap';
 import { ServiceCenter } from '../types';
@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="bg-primary-dark text-white rounded-2xl p-8 mb-8">
+      {/* <div className="bg-primary-dark text-white rounded-2xl p-8 mb-8">
         <div className="max-w-2xl">
           <h1 className="text-3xl font-bold mb-4">
             Skip the wait, save your time
@@ -114,7 +114,7 @@ const HomePage: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="w-full lg:w-1/2">
@@ -122,15 +122,6 @@ const HomePage: React.FC = () => {
             <h2 className="text-xl font-medium text-neutral-800">
               Service Centers Near You
             </h2>
-            <button className="flex items-center text-sm text-neutral-600 hover:text-primary-dark">
-              <Filter className="w-4 h-4 mr-1" />
-              Filters
-            </button>
-          </div>
-
-          <div className="flex items-center text-sm text-neutral-600 mb-4">
-            <MapPin className="w-4 h-4 mr-1" />
-            <span>Current location: San Francisco, CA</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -145,16 +136,7 @@ const HomePage: React.FC = () => {
             <h2 className="text-xl font-medium text-neutral-800 mb-4">
               Queue Map
             </h2>
-            {/* <QueueMap /> */}
-            <iframe
-              width="600"
-              height="450"
-              style={{ border: "0" }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed/v1/place?key=API_KEY&q=Space+Needle,Seattle+WA"
-            ></iframe>
+            <QueueMap />
           </div>
         </div>
       </div>

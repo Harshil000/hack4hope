@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Clock, Calendar, User, BarChart3, Bell } from 'lucide-react';
+import { Menu, X, Clock, Calendar, User, BarChart3, Bell, MailCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
@@ -21,6 +21,7 @@ const Navbar: React.FC = () => {
 
   const logout = () => {
     localStorage.removeItem('mail');
+    setcheckMail(null)
     navigate('/login');
   };
 
@@ -70,7 +71,8 @@ const Navbar: React.FC = () => {
             </div>
           }
 
-          <div className='btn-primary h-fit w-fit px-4 py-2 cursor-pointer mt-3' onClick={logout}>Logout</div>
+          {checkMail != null && <div className='btn-primary h-fit w-fit px-4 py-2 cursor-pointer mt-3' onClick={logout}>Logout</div>
+          }
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
