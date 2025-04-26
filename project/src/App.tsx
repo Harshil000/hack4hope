@@ -15,9 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="booking" element={<BookingPage />} />
-            <Route path="dashboard" element={<UserDashboard />} />
+            <Route index element={<UserDashboard />} />
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
