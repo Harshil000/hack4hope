@@ -10,9 +10,9 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  if (!isAuthenticated) {
-    navigate('/login');
-  }
+  // if (!isAuthenticated) {
+  //   navigate('/login');
+  // }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
