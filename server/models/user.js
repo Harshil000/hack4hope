@@ -7,6 +7,6 @@ const userSchema = new mongoose.Schema({
     userType: String
 })
 
-const userModel= mongoose.model('quiz', userSchema)
+const userModel= mongoose.model('user', userSchema)
 
 module.exports = userModel

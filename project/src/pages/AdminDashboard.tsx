@@ -30,18 +30,6 @@ const AdminDashboard: React.FC = () => {
           <h1 className="text-2xl font-bold text-neutral-800">Admin Dashboard</h1>
           <p className="text-neutral-600">Monitor and manage your service center queues</p>
         </div>
-        <div className="mt-4 md:mt-0 flex items-center space-x-4">
-          <button className="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200">
-            <Bell className="w-5 h-5" />
-          </button>
-          <button className="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200">
-            <Settings className="w-5 h-5" />
-          </button>
-          <button className="btn-primary">
-            <Users className="w-5 h-5 mr-2" />
-            Manage Staff
-          </button>
-        </div>
       </div>
       
       <div className="bg-white rounded-xl shadow-sm border border-neutral-200 p-5 mb-8">
