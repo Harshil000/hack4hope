@@ -18,13 +18,18 @@ app.get("/", (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
-    const {mail, password} = req.body
+    const {mail, password, usertype} = req.body
     const validUser = await userModel.findOne({mail})
     if(!validUser){
         res.json({ status: 'reject', message: 'user not found' });
     } else {
         if (validUser.password==password){
-        res.json({ status: 'accepted', message: 'successfully logged in' });
+            if(validUser.userType == usertype){
+                res.json({ status: 'accepted', message: 'successfully logged in', user: validUser });
+            } else {
+                res.json({ status: 'reject', message: 'invalid user'});
+            }
+
         } else {
             res.json({ status: 'reject', message: 'incorrect password' });
         }
