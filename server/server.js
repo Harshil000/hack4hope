@@ -17,8 +17,8 @@ app.get("/", (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
-    const {email, password} = req.body
-    const validUser = await userModel.findOne({email})
+    const {mail, password} = req.body
+    const validUser = await userModel.findOne({mail})
     if(!validUser){
         res.send(JSON.stringfy({status: 'reject', message: 'user not found'}))
     } else {
@@ -32,10 +32,10 @@ app.post('/login', async (req, res) => {
 })
 
 app.post('/signup', async(req, res)=>{
-    const {name, email, password} = req.body
+    const {name, mail, password} = req.body
     const newUser = await userModel.create({
         name,
-        email,
+        mail,
         password
     })
     res.send("User added succesfully")
