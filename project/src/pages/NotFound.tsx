@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, AlertCircle } from 'lucide-react';
 
-const NotFound: React.FC = () => {
+const NotFound = () => {
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
       <div className="text-center px-4">

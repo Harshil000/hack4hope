@@ -3,8 +3,8 @@ import { Calendar, Clock, Settings, Users, Bell, BarChart3, ArrowUpRight } from 
 import QueueStats from '../components/Admin/QueueStats';
 import AppointmentsTable from '../components/Admin/AppointmentsTable';
 
-const AdminDashboard: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+const AdminDashboard = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
   
   // Mock data for queue stats
   const queueStats = {
@@ -19,7 +19,7 @@ const AdminDashboard: React.FC = () => {
   const waitTimeTrend = [15, 18, 22, 25, 28, 24, 20, 18];
   
   // Format date for display
-  const formatDate = (date: Date) => {
+  const formatDate = (date) => {
     return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   };
   
